@@ -111,9 +111,12 @@ with center_col:
             )
         else:
             try:
+                logs = []
+
                 with st.spinner("Processing sources and building the knowledge base..."):
                     for status in process_sources(urls=urls, pdf_paths=pdf_paths):
-                        status_placeholder.info(status)
+                        logs.append(status)
+                        status_placeholder.info("\n".join(logs[-8:]))
 
                 status_placeholder.success(
                     "Sources processed successfully. You can now ask questions."
