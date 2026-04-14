@@ -1,14 +1,14 @@
 import streamlit as st
 from rag import process_sources, generate_answer, save_uploaded_file
 
-st.title("Real Estate Research Tool" )
+st.title("# RAG-Based Research Tool (URL + PDF Support)" )
 
 url1 = st.sidebar.text_input("URL 1")
 url2 = st.sidebar.text_input("URL 2")
 url3 = st.sidebar.text_input("URL 3")
 
 uploaded_files = st.sidebar.file_uploader(
-    "Upload PDF files",
+    "Upload PDF documents",
     type=["pdf"],
     accept_multiple_files=True
 )
@@ -43,6 +43,9 @@ if query:
         if sources:
             st.subheader("Sources:")
             for source in sources.split("\n"):
-                st.write(source)
+                if source.strip():
+                    st.write(source)
+
+
     except RuntimeError:
         placeholder.text("You must process URLs or PDFs first")
