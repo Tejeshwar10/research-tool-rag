@@ -1,6 +1,19 @@
+# Ignore secrets
+.env
+
+# Ignore Python cache
 __pycache__/
 *.pyc
-.env
+
+# Ignore vector DB (VERY IMPORTANT)
+resources/vectorstore/
+
+# Ignore uploaded files
+resources/uploads/
+
+# Mac
 .DS_Store
+
+# Virtual environments (optional but good)
 venv/
 .venv/

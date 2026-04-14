@@ -1,5 +1,5 @@
 import streamlit as st
-from rag import process_urls,generate_answer
+from rag import process_sources, generate_answer, save_uploaded_file
 
 st.title("Real Estate Research Tool" )
 
@@ -7,15 +7,28 @@ url1 = st.sidebar.text_input("URL 1")
 url2 = st.sidebar.text_input("URL 2")
 url3 = st.sidebar.text_input("URL 3")
 
-placeholder = st.empty()
-process_url_button = st.sidebar.button("Process URLs")
-if process_url_button:
-    urls = [url for url in (url1,url2,url3) if url !=""]
+uploaded_files = st.sidebar.file_uploader(
+    "Upload PDF files",
+    type=["pdf"],
+    accept_multiple_files=True
+)
 
-    if len(urls)==0:
-        placeholder.text("Please provide at least one valid URL")
+
+placeholder = st.empty()
+process_sources_button = st.sidebar.button("Process Sources")
+if process_sources_button:
+    urls = [url for url in (url1, url2, url3) if url.strip() != ""]
+
+    pdf_paths = []
+    if uploaded_files:
+        for uploaded_file in uploaded_files:
+            saved_path = save_uploaded_file(uploaded_file)
+            pdf_paths.append(saved_path)
+
+    if len(urls) == 0 and len(pdf_paths) == 0:
+        placeholder.text("Please provide at least one valid URL or upload one PDF")
     else:
-        for status in process_urls(urls):
+        for status in process_sources(urls=urls, pdf_paths=pdf_paths):
             placeholder.text(status)
 
 
@@ -31,5 +44,5 @@ if query:
             st.subheader("Sources:")
             for source in sources.split("\n"):
                 st.write(source)
-    except RuntimeError as e:
-        placeholder.text("You must process Url first")
+    except RuntimeError:
+        placeholder.text("You must process URLs or PDFs first")
