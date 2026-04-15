@@ -13,7 +13,7 @@ from langchain_classic.chains import RetrievalQAWithSourcesChain
 load_dotenv()
 
 # constants
-CHUNK_SIZE = 1200
+CHUNK_SIZE = 800
 EMBEdding_Model = "Alibaba-NLP/gte-base-en-v1.5"
 VECTORSTORE_DIR = Path(__file__).parent / "resources/vectorstore"
 COLLECTION_NAME = "research_tool"
@@ -30,7 +30,7 @@ def intialise_components():
         llm = ChatGroq(
             #model="llama-3.1-8b-instant",
             model="llama-3.3-70b-versatile",
-            max_tokens=150,
+            max_tokens=500,
             temperature=0.7,
         )
 
@@ -103,7 +103,7 @@ def process_sources(urls=None, pdf_paths=None):
     yield "adding the chunks to the vector database"
 
     start_time = time.time()
-    batch_size = 25
+    batch_size = 50
 
     for i in range(0, len(docs), batch_size):
         batch_docs = docs[i:i + batch_size]
@@ -132,7 +132,7 @@ def generate_answer(query):
     if vector_store is None:
         raise RuntimeError("vector DB is not initialised")
 
-    retriever = vector_store.as_retriever(search_kwargs={"k": 4})
+    retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 
     chain = RetrievalQAWithSourcesChain.from_llm(
         llm=llm,

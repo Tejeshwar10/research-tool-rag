@@ -116,7 +116,28 @@ with center_col:
                 with st.spinner("Processing sources and building the knowledge base..."):
                     for status in process_sources(urls=urls, pdf_paths=pdf_paths):
                         logs.append(status)
-                        status_placeholder.info("\n".join(logs[-8:]))
+
+                        status_placeholder.markdown(
+                            """
+                            <div style="font-weight: 600; margin-bottom: 6px;">Processing Status</div>
+                            <div style="
+                                border: 1px solid rgba(250,250,250,0.08);
+                                border-radius: 10px;
+                                padding: 10px;
+                                background-color: rgba(255,255,255,0.02);
+                                height: 150px;
+                                overflow-y: scroll;
+                                display: block;
+                                font-family: monospace;
+                                font-size: 13px;
+                            ">
+                            {}
+                            </div>
+                            """.format("<br>".join(logs[-20:])),  # show more lines to trigger scroll
+                            unsafe_allow_html=True
+                        )
+
+
 
                 status_placeholder.success(
                     "Sources processed successfully. You can now ask questions."
