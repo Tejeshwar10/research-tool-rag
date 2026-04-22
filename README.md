@@ -1,4 +1,4 @@
-# 📘 RAG-Based Research Tool
+# RAG-Based Research Tool
 
 A Python app that lets you ask questions over your own documents — paste in URLs or upload PDFs, and get answers grounded in the actual content with source citations. No hallucinations, no guessing.
 
@@ -133,4 +133,4 @@ Get a free Groq API key at [console.groq.com](https://console.groq.com)
 
 ## Author
 
-**Tejeshwar Singh** — [LinkedIn](https://www.linkedin.com/in/tejeshwarsingh10091991/) · [GitHub](https://github.com/Tejeshwar10)
+**Tejeshwar Singh** — [LinkedIn](https://www.linkedin.com/in/tejeshwarsingh10091991/) 
