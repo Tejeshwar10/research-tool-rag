@@ -8,7 +8,7 @@ Built with LangChain, ChromaDB, HuggingFace embeddings, and LLaMA 3.3-70B via Gr
 
 ## Why I Built This
 
-Analysts spend way too much time manually skimming through articles and reports to find specific data points. I wanted a tool where you throw in a few sources and just ask your question — and get a cited, accurate answer in seconds.
+Analysts spend way too much time manually skimming through articles and reports to find specific data points. I wanted a tool where you throw in a few sources and just ask your question  and get a cited, accurate answer in seconds.
 
 ---
 
@@ -99,8 +99,8 @@ Get a free Groq API key at [console.groq.com](https://console.groq.com)
 ## Usage
 
 1. Paste up to 3 URLs and/or upload PDFs in the sidebar
-2. Hit **Process Sources** — chunks get embedded and indexed
-3. Ask anything in the main panel — answers come with source citations
+2. Hit **Process Sources**, chunks get embedded and indexed
+3. Ask anything in the main panel, answers come with source citations
 
 **Example:**
 > *"What was the 30-year fixed mortgage rate and when was it reported?"*
