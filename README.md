@@ -1,6 +1,6 @@
 # RAG-Based Research Tool
 
-A Python app that lets you ask questions over your own documents — paste in URLs or upload PDFs, and get answers grounded in the actual content with source citations. No hallucinations, no guessing.
+A Python app that lets you ask questions over your own documents  paste in URLs or upload PDFs, and get answers grounded in the actual content with source citations. No hallucinations, no guessing.
 
 Built with LangChain, ChromaDB, HuggingFace embeddings, and LLaMA 3.3-70B via Groq. Frontend is Streamlit.
 
